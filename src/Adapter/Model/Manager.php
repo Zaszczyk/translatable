@@ -80,7 +80,7 @@ class Manager implements \Ovide\Lib\Translate\TranslationInterface
     public function get($field, $language)
     {
         if (!isset($this->_translations[$language])) {
-            if ($this->_src->getDirtyState() === \Phalcon\Mvc\Model::DIRTY_STATE_TRANSIENT) {
+            if ($this->_src->getDirtyState() === \Phalcon\Mvc\Model::DIRTY_STATE_DETACHED) {
                 return '';
             }
 

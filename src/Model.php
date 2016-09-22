@@ -62,7 +62,7 @@ class Model extends \Phalcon\Mvc\Model
     /**
      * @var Service
      */
-    protected $_translator  = null;
+    protected $_translator = null;
 
     /**
      * An array of field names that form the PK
@@ -258,7 +258,7 @@ class Model extends \Phalcon\Mvc\Model
         }
 
         $translation = $this->__translations->get($field, $language);
-        if($translation === null){
+        if ($translation === null) {
             return parent::__get($field);
         }
         return $translation;
@@ -292,6 +292,15 @@ class Model extends \Phalcon\Mvc\Model
         }
 
         $this->__updated[$language][] = $field;
+    }
+
+    public function setTranslations(array $translations)
+    {
+        foreach ($translations as $field => $locales) {
+            foreach ($locales as $locale => $value) {
+                $this->setTranslation($field, $value, $locale);
+            }
+        }
     }
 
     public static function setLanguageResolver(\Closure $function)
@@ -335,7 +344,7 @@ class Model extends \Phalcon\Mvc\Model
 
         $adapter = $this->_translator->getAdapterFor(static::class);
         $options = isset($adapter['options']) ? $adapter['options'] : null;
-        $class   = $adapter['manager'];
+        $class = $adapter['manager'];
         $this->__translations = $class::retrieve($this, $key, $options);
     }
 
@@ -348,8 +357,8 @@ class Model extends \Phalcon\Mvc\Model
     {
         if (!is_array($this->__pk)) {
             $metadata = $this->getModelsMetaData();
-            $mapped   = $metadata->getColumnMap($this);
-            $keys     = $metadata->getPrimaryKeyAttributes($this);
+            $mapped = $metadata->getColumnMap($this);
+            $keys = $metadata->getPrimaryKeyAttributes($this);
 
             foreach ($keys as $key) {
                 $use = isset($mapped[$key]) ? $mapped[$key] : $key;
