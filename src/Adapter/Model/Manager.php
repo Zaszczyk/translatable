@@ -129,7 +129,7 @@ class Manager implements \Ovide\Lib\Translate\TranslationInterface
 
         if (!$this->_translations[$language][$field]) {
             $new = new $className($data);
-            $new->text = '';
+            $new->text = null;
             $this->_translations[$language][$field] = $new;
         }
     }
