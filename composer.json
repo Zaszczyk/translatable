@@ -1,6 +1,6 @@
 {
-    "name": "ovide/translatable",
-    "description": "Manage translatable fields with Phalcon models",
+    "name": "zaszczyk/translatable",
+    "description": "Manage translatable fields with Phalcon models. Forked from https://github.com/ovide/translatable",
     "authors": [
         {
             "name" : "Albert Ovide",
