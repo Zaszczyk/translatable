@@ -119,7 +119,7 @@ class Model extends \Phalcon\Mvc\Model
             }
         }
 
-        parent::create($data, $whiteList);
+        return parent::create($data, $whiteList);
     }
 
     /**
