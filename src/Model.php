@@ -113,9 +113,11 @@ class Model extends \Phalcon\Mvc\Model
      */
     public function create($data = null, $whiteList = null)
     {
-        foreach (array_keys($data) as $field) {
-            if (in_array($field, $this->_translatable)) {
-                $this->setTranslation($field, $data[$field]);
+        if (is_array($data)) {
+            foreach (array_keys($data) as $field) {
+                if (in_array($field, $this->_translatable)) {
+                    $this->setTranslation($field, $data[$field]);
+                }
             }
         }
 
