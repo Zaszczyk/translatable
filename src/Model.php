@@ -264,7 +264,7 @@ class Model extends \Phalcon\Mvc\Model
         }
 
         $translation = $this->__translations->get($field, $language);
-        if ($translation === null) {
+        if ($translation === null || $translation === '') {
             return parent::__get($field);
         }
         return $translation;
